@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import validator from 'validator';
 
 const UserSchema = new mongoose.Schema({
-  firstName: {
+  name: {
     type: String,
     required: [true, 'Please provide first name.'],
     minlength: 3,
@@ -11,10 +11,10 @@ const UserSchema = new mongoose.Schema({
   },
   lastName: {
     type: String,
-    required: [true, 'Please provide last name.'],
     minlength: 3,
     maxlength: 30,
     trim: true,
+    default: undefined,
   },
   email: {
     type: String,
@@ -35,7 +35,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     maxlength: 20,
     trim: true,
-    default: 'my city',
+    default: undefined,
   },
 });
 

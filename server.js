@@ -5,6 +5,7 @@ import errorHandlerMiddleware from './middleware/error-handler.js';
 import notFoundMiddleware from './middleware/not-found.js';
 import authRouter from './routes/authRoutes.js';
 import jobsRouter from './routes/jobsRoutes.js';
+// import 'express-async-errors';
 
 const app = express();
 const port = process.env.PORT || 4000;
