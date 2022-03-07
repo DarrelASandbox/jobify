@@ -10,6 +10,7 @@
 ## Notes
 
 - Hard refresh on chrome : Hold down Shift and click the Reload button.
+- Links vs Buttons : https://www.digitala11y.com/links-vs-buttons-a-perennial-problem/
 
 ### ES7+ React/Redux/React-Native snippets
 
