@@ -34,6 +34,7 @@ MONGO_URL= connection string into your application code from https://www.mongodb
   ```sh
   sudo lsof -PiTCP -sTCP:LISTEN
   ```
+- bcrypt vs bcrypt<b>js</b> : https://github.com/kelektiv/node.bcrypt.js/wiki/bcrypt-vs-bcrypt.js
 
 ### ES7+ React/Redux/React-Native snippets
 
