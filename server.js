@@ -10,7 +10,6 @@ import jobsRouter from './routes/jobsRoutes.js';
 const app = express();
 const port = process.env.PORT || 4000;
 dotenv.config();
-
 app.use(express.json());
 
 app.get('/', (req, res) => {
