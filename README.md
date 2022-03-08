@@ -24,6 +24,8 @@ touch .env
 ```env
 PORT=4000
 MONGO_URL= connection string into your application code from https://www.mongodb.com/atlas/database
+JWT_SECRET= use https://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx
+JWT_LIFETIME=1d
 ```
 
 ## Notes
