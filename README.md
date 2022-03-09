@@ -48,6 +48,10 @@ JWT_LIFETIME=1d
     - Setup script and ES6 Module ("type": "module",) if applicable.
 - Browser Fetch API CORS error : https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors
   - <b>Solution:</b> npm i cors or proxy : https://create-react-app.dev/docs/proxying-api-requests-in-development/ <b>(NOT PRODUCTION)</b>
+- Fetch API VS Axios : https://stackoverflow.com/questions/40844297/what-is-difference-between-axios-and-fetch
+  - https://www.javascriptstuff.com/ajax-libraries/
+- Check if there is a need for token array for logging in using multiple devices.
+- localStorage : https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API
 
 ### ES7+ React/Redux/React-Native snippets
 
