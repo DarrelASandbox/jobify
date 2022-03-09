@@ -37,6 +37,14 @@ JWT_LIFETIME=1d
   sudo lsof -PiTCP -sTCP:LISTEN
   ```
 - bcrypt vs bcrypt<b>js</b> : https://github.com/kelektiv/node.bcrypt.js/wiki/bcrypt-vs-bcrypt.js
+- Have 2 package.json structure (1 for frontend (React) and 1 for backend (server))
+  - <b>Why:</b> For an easier setup of both frontend and backend. Otherwise, you have to use npm eject to change the path of react script to locate index.js.
+  - Switching from monorepo structure:
+    - BACKUP exisiting .git folder, package.json and package-lock.json.
+    - Use CRA CLI in client folder.
+    - Replace content respectively.
+    - Regenerate and replace both package.json and package-lock.json (npm i --package-lock-only).
+    - Setup script and ES6 Module ("type": "module",) if applicable.
 
 ### ES7+ React/Redux/React-Native snippets
 
