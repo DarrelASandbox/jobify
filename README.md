@@ -53,6 +53,18 @@ JWT_LIFETIME=1d
 - Check if there is a need for token array for logging in using multiple devices.
 - localStorage : https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API
 
+### Notes taken from Persist User In Local Storage comment section:
+
+> hello John im a little bit curious why you didnt check if the token value exists first before setting the token value to token.example
+> is there a reason you didnt check if the token exists??
+
+```js
+serInfo: user ? JSON.parse("user") : null,
+    token: token,
+```
+
+> Because token is a string, if it does not exist, it's just going to be undefined. When it comes to user it's an object, so before parsing it, I want to check whether it exists.
+
 ### ES7+ React/Redux/React-Native snippets
 
 - shortcuts
