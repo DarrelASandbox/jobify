@@ -4,6 +4,7 @@
 - Tutorial for Jobify
 - https://www.johnsmilga.com/
 - https://github.com/john-smilga/mern-course-jobify
+- https://course-api.com/ (John Smilga)
 
 ## Installation
 
@@ -45,6 +46,8 @@ JWT_LIFETIME=1d
     - Replace content respectively.
     - Regenerate and replace both package.json and package-lock.json (npm i --package-lock-only).
     - Setup script and ES6 Module ("type": "module",) if applicable.
+- Browser Fetch API CORS error : https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors
+  - <b>Solution:</b> npm i cors or proxy : https://create-react-app.dev/docs/proxying-api-requests-in-development/ <b>(NOT PRODUCTION)</b>
 
 ### ES7+ React/Redux/React-Native snippets
 
