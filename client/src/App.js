@@ -6,14 +6,21 @@ import {
   SharedLayout,
   Stats,
 } from './pages/dashboard/index';
-import { Error, Landing, Register } from './pages/index';
+import { Error, Landing, ProtectedRoute, Register } from './pages/index';
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<SharedLayout />}>
+          <Route
+            path='/'
+            element={
+              <ProtectedRoute>
+                <SharedLayout />
+              </ProtectedRoute>
+            }
+          >
             <Route index element={<Stats />} />
             <Route path='all-jobs' element={<AllJob />} />
             <Route path='add-job' element={<AddJob />} />
