@@ -52,6 +52,13 @@ JWT_LIFETIME=1d
   - https://www.javascriptstuff.com/ajax-libraries/
 - Check if there is a need for token array for logging in using multiple devices.
 - localStorage : https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API
+- Postman token setup for Register User and Login User under Tests tab.
+  ```js
+  const jsonData = pm.response.json();
+  pm.globals.set('token', jsonData.token);
+  ```
+
+````
 
 ### Notes taken from Persist User In Local Storage comment section:
 
@@ -61,7 +68,7 @@ JWT_LIFETIME=1d
 ```js
 serInfo: user ? JSON.parse("user") : null,
     token: token,
-```
+````
 
 > Because token is a string, if it does not exist, it's just going to be undefined. When it comes to user it's an object, so before parsing it, I want to check whether it exists.
 
