@@ -57,8 +57,16 @@ JWT_LIFETIME=1d
   const jsonData = pm.response.json();
   pm.globals.set('token', jsonData.token);
   ```
+- Prevent hashing of password twice with isModified('password')
+  - Also could go with the populate method instead of setting password select field to be false method at the beginning.
 
-````
+```js
+UserSchema.pre('save', async function () {
+  if (!this.isModified('password')) return;
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+```
 
 ### Notes taken from Persist User In Local Storage comment section:
 
@@ -68,7 +76,7 @@ JWT_LIFETIME=1d
 ```js
 serInfo: user ? JSON.parse("user") : null,
     token: token,
-````
+```
 
 > Because token is a string, if it does not exist, it's just going to be undefined. When it comes to user it's an object, so before parsing it, I want to check whether it exists.
 
