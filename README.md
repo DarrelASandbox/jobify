@@ -29,6 +29,8 @@ JWT_SECRET= use https://www.allkeysgenerator.com/Random/Security-Encryption-Key-
 JWT_LIFETIME=1d
 ```
 
+&nbsp;
+
 ## Notes
 
 - Hard refresh on chrome : Hold down Shift and click the Reload button.
@@ -68,6 +70,10 @@ UserSchema.pre('save', async function () {
 });
 ```
 
+- Axios : There will be a security issue if sending bearer token using globally. e.g If you make API call to third party, the header will contain the bearer token.
+
+&nbsp;
+
 ### Notes taken from Persist User In Local Storage comment section:
 
 > hello John im a little bit curious why you didnt check if the token value exists first before setting the token value to token.example
@@ -79,6 +85,8 @@ serInfo: user ? JSON.parse("user") : null,
 ```
 
 > Because token is a string, if it does not exist, it's just going to be undefined. When it comes to user it's an object, so before parsing it, I want to check whether it exists.
+
+&nbsp;
 
 ### ES7+ React/Redux/React-Native snippets
 
