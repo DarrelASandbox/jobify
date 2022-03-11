@@ -242,6 +242,7 @@ const AppProvider = ({ children }) => {
       });
     } catch (error) {
       console.log(error.response);
+      // logoutUser() // Turn off during development.
     }
     clearAlert();
   };
