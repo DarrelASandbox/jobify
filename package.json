@@ -17,9 +17,9 @@
     "validator": "^13.7.0"
   },
   "scripts": {
-    "dev": "npx nodemon server.js --ignore client",
+    "server": "npx nodemon server.js --ignore client",
     "client": "npm start --prefix client",
-    "start": "concurrently --kill-others-on-fail \"npm run dev\" \"npm run client\""
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
