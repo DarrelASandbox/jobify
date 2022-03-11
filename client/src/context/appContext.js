@@ -40,10 +40,24 @@ const AppProvider = ({ children }) => {
 
   const authFetch = axios.create({
     baseURL: '/api/v1',
-    headers: {
-      Authorization: `Bearer ${state.token}`,
-    },
   });
+
+  authFetch.interceptors.request.use(
+    (config) => {
+      config.headers.common['Authorization'] = `Bearer ${state.token}`;
+      return config;
+    },
+    (error) => Promise.reject(error)
+  );
+
+  authFetch.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      console.log(error.response);
+      if (error.response.status === 401) return console.log('AUTH ERROR');
+      return Promise.reject(error);
+    }
+  );
 
   const clearAlert = () => {
     setTimeout(() => {

@@ -88,6 +88,37 @@ serInfo: user ? JSON.parse("user") : null,
 
 &nbsp;
 
+### Notes taken from Axios Interceptors - Complete comment section:
+
+> Custom authentication + local storage use safe?
+
+> John - your course is fantastic, thank you. One question on authentication: I read so much conflicting information out there. Many people seem to think that local storage is not a safe place to store tokens. And many people also seem to think that authentication is too hard for amateurs to get right and it must be outsourced to Auth0/Firebase/etc. Though you seem to have a very practical and thoughtful approach.
+
+> I'm working on project that I hope will become a real business and would appreciate your input. Is your authentication strategy suitable for this, or only for very small personal projects? I understand there is no final answer so would just appreciate your opinion. Thanks!
+
+&nbsp;
+
+> Very good questions.
+
+> As far as local storage being safe, yes it's a never ending debate. I personally have not had security based issues with local storage. The alternative approach is using cookies (store JWT in the cookie) and eventually I do want to add another project to this course where I cover that (unfortunately have not timelines). I personally prefer cookies but only because it's less work on the front-end (don't need to store/retrieve JWT) and not because of security issues. Few downsides of cookies, size (pretty much can store only JWT) and the front-end needs to be on the same server, so it's very hard to make a public api using cookies. So for example on some apps I use cookies but for my public apis, I use local storage.
+
+> Now, when it comes to Auth Providers, yes if it's a service where you charge people money, if you want to stay on the safe side, I would say go with one of the Auth Providers. For one you will have less liability (especially considering that most people use the same password for everything) and also realistically such companies deal with auth for a living, and as a result their infrastructure, and solutions of course are going to be way more complex.
+
+> What's interesting though, some of the big Auth Providers (for example AUTH0) still send/store JWT in local storage, which leads me to believe that some of this fighting, over which approach is better, is over exaggerated.
+
+&nbsp;
+
+> I circled back to you with my first question because I had tried to install auth0 and personally found there docs to be.. not so great. I'm struggling to complete the installation. For a MERN stack app, is Auth0 your only recommendation or are there others you would recommend as well (Firebase, etc)?
+
+> Firebase is good choice. The reason why I avoid Firebase in the courses, is because it kinda defeats the entire purpose of making your own (MERN) full stack application in the first place.
+
+> So basically you can just use Firebase for everything (data storage, auth, etc). Like I said, actually very good option.
+> Now, why I think it's important to learn/teach MERN, because I honestly say that it made me a better front-end developer since now I have a better picture of entire process. Not just front-end part.
+
+> With that said, if it's a production ready app and I don't know whether it's going to be successful or not (essentially, how many users I will have). I seriously would consider Firebase.
+
+&nbsp;
+
 ### ES7+ React/Redux/React-Native snippets
 
 - shortcuts
