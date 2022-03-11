@@ -6,6 +6,7 @@ import {
   LOGIN_USER_BEGIN,
   LOGIN_USER_ERROR,
   LOGIN_USER_SUCCESS,
+  LOGOUT_USER,
   REGISTER_USER_BEGIN,
   REGISTER_USER_ERROR,
   REGISTER_USER_SUCCESS,
@@ -13,7 +14,6 @@ import {
   SETUP_USER_ERROR,
   SETUP_USER_SUCCESS,
   TOGGLE_SIDEBAR,
-  LOGOUT_USER,
 } from './actions';
 import reducer from './reducer';
 
@@ -131,6 +131,10 @@ const AppProvider = ({ children }) => {
     removeUserFromLocalStorage();
   };
 
+  const updateUser = async (currentUser) => {
+    console.log(currentUser);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -141,6 +145,7 @@ const AppProvider = ({ children }) => {
         setupUser,
         toggleSidebar,
         logoutUser,
+        updateUser,
       }}
     >
       {children}
