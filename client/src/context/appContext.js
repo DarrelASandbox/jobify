@@ -14,6 +14,9 @@ import {
   SETUP_USER_ERROR,
   SETUP_USER_SUCCESS,
   TOGGLE_SIDEBAR,
+  UPDATE_USER_BEGIN,
+  UPDATE_USER_ERROR,
+  UPDATE_USER_SUCCESS,
 } from './actions';
 import reducer from './reducer';
 
@@ -54,7 +57,9 @@ const AppProvider = ({ children }) => {
     (response) => response,
     (error) => {
       console.log(error.response);
-      if (error.response.status === 401) return console.log('AUTH ERROR');
+      if (error.response.status === 401) {
+        return logoutUser();
+      }
       return Promise.reject(error);
     }
   );
@@ -62,7 +67,7 @@ const AppProvider = ({ children }) => {
   const clearAlert = () => {
     setTimeout(() => {
       dispatch({ type: CLEAR_ALERT });
-    }, 3000);
+    }, 6000);
   };
 
   const displayAlert = () => {
@@ -153,16 +158,25 @@ const AppProvider = ({ children }) => {
   };
 
   const updateUser = async (currentUser) => {
+    dispatch({ type: UPDATE_USER_BEGIN });
     try {
       const { data } = await authFetch.patch('/auth/updateUser', currentUser);
-      // Check if authorization bearer token is sent to other API in header.
-      // const { data: tours } = await axios.get(
-      //   'https://course-api.com/react-tours-project'
-      // );
-      console.log(data);
+      const { user, location, token } = data;
+
+      dispatch({
+        type: UPDATE_USER_SUCCESS,
+        payload: { user, location, token },
+      });
+      addUserToLocalStorage({ user, location, token });
     } catch (error) {
-      console.log(error.response);
+      if (error.response.status !== 401) {
+        dispatch({
+          type: UPDATE_USER_ERROR,
+          payload: { msg: error.response.data.msg },
+        });
+      }
     }
+    clearAlert();
   };
 
   return (
