@@ -1,9 +1,9 @@
 import { StatusCodes } from 'http-status-codes';
+import moment from 'moment';
 import mongoose from 'mongoose';
 import { BadRequestError, NotFoundError } from '../errors/index.js';
 import Job from '../models/Job.js';
 import checkPermission from '../utils/checkPermission.js';
-import moment from 'moment';
 
 const createJob = async (req, res, next) => {
   const { position, company } = req.body;
@@ -32,11 +32,17 @@ const getAllJobs = async (req, res) => {
   if (sort === 'a-z') result = result.sort('position');
   if (sort === 'z-a') result = result.sort('-position');
 
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 20;
+  const skip = (page - 1) * limit;
+  result = result.skip(skip).limit(limit);
+
   const jobs = await result; // chain sort conditions
 
-  res
-    .status(StatusCodes.OK)
-    .json({ jobs, totalJobs: jobs.length, numOfPages: 1 });
+  const totalJobs = await Job.countDocuments(queryObject);
+  const numOfPages = Math.ceil(totalJobs / limit);
+
+  res.status(StatusCodes.OK).json({ jobs, totalJobs, numOfPages });
 };
 
 const updateJob = async (req, res) => {
