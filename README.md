@@ -71,6 +71,7 @@ UserSchema.pre('save', async function () {
 ```
 
 - Axios : There will be a security issue if sending bearer token using globally. e.g If you make API call to third party, the header will contain the bearer token.
+- <b>showStats</b> https://docs.mongodb.com/manual/core/aggregation-pipeline/
 
 &nbsp;
 
