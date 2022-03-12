@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import { BadRequestError, NotFoundError } from '../errors/index.js';
 import Job from '../models/Job.js';
 import checkPermission from '../utils/checkPermission.js';
+import moment from 'moment';
 
 const createJob = async (req, res, next) => {
   const { position, company } = req.body;
@@ -70,7 +71,34 @@ const showStats = async (req, res) => {
     Declined: stats.Declined || 0,
   };
 
-  let monthlyApplications = [];
+  let monthlyApplications = await Job.aggregate([
+    { $match: { createdBy: mongoose.Types.ObjectId(req.user.userId) } },
+    {
+      $group: {
+        _id: { year: { $year: '$createdAt' }, month: { $month: '$createdAt' } },
+        count: { $sum: 1 },
+      },
+    },
+    { $sort: { '_id.year': -1, '_id.month': -1 } }, // Sort latest date for entire DB
+    { $limit: 6 }, // 6 months
+  ]);
+
+  monthlyApplications = monthlyApplications
+    .map((item) => {
+      const {
+        _id: { year, month },
+        count,
+      } = item;
+
+      // moment.js months is from 0 to 11 while mongodb is from 1 to 12.
+      const date = moment()
+        .month(month - 1)
+        .year(year)
+        .format('MMM Y');
+
+      return { date, count };
+    })
+    .reverse(); // Sort oldest date for the past 6 months.
 
   res.status(StatusCodes.OK).json({ defaultStats, monthlyApplications });
 };
