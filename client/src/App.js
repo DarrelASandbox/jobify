@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {
   AddJob,
-  AllJob,
+  AllJobs,
   Profile,
   SharedLayout,
   Stats,
@@ -22,7 +22,7 @@ function App() {
             }
           >
             <Route index element={<Stats />} />
-            <Route path='all-jobs' element={<AllJob />} />
+            <Route path='all-jobs' element={<AllJobs />} />
             <Route path='add-job' element={<AddJob />} />
             <Route path='profile' element={<Profile />} />
           </Route>

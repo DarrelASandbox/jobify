@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Wrapper = styled.article`
   background: var(--white);
@@ -41,15 +41,15 @@ const Wrapper = styled.article`
       letter-spacing: var(--letterSpacing);
     }
   }
-  .pending {
+  .Pending {
     background: #fcefc7;
     color: #e9b949;
   }
-  .interview {
+  .Interview {
     background: #e0e8f9;
     color: #647acb;
   }
-  .declined {
+  .Declined {
     color: #d66a6a;
     background: #ffeeee;
   }
@@ -100,6 +100,6 @@ const Wrapper = styled.article`
   &:hover .actions {
     visibility: visible;
   }
-`
+`;
 
-export default Wrapper
+export default Wrapper;

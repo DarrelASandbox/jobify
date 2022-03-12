@@ -24,6 +24,7 @@ import {
   UPDATE_USER_BEGIN,
   UPDATE_USER_ERROR,
   UPDATE_USER_SUCCESS,
+  SET_EDIT_JOB,
 } from './actions';
 import reducer from './reducer';
 
@@ -232,6 +233,7 @@ const AppProvider = ({ children }) => {
   const getAllJobs = async () => {
     let url = `/jobs`;
     dispatch({ type: GET_JOBS_BEGIN });
+
     try {
       const { data } = await authFetch(url);
       const { jobs, totalJobs, numOfPages } = data;
@@ -245,6 +247,14 @@ const AppProvider = ({ children }) => {
       // logoutUser() // Turn off during development.
     }
     clearAlert();
+  };
+
+  const setEditJob = (id) => dispatch({ type: SET_EDIT_JOB, payload: { id } });
+  const editJob = () => console.log('edit job');
+  // Do not need to pass in anything into editJob() as info needed is already in the state.
+
+  const deleteJob = (id) => {
+    console.log(`delete job : ${id}`);
   };
 
   return (
@@ -262,6 +272,9 @@ const AppProvider = ({ children }) => {
         clearValues,
         createJob,
         getAllJobs,
+        setEditJob,
+        deleteJob,
+        editJob,
       }}
     >
       {children}
