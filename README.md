@@ -72,6 +72,18 @@ UserSchema.pre('save', async function () {
 
 - Axios : There will be a security issue if sending bearer token using globally. e.g If you make API call to third party, the header will contain the bearer token.
 - <b>showStats</b> https://docs.mongodb.com/manual/core/aggregation-pipeline/
+- Mockaroo:
+
+  | Field Name  |       Type        |                Options                |
+  | :---------: | :---------------: | :-----------------------------------: |
+  |   company   | Fake Company Name |                                       |
+  |  position   |     Job Title     |                                       |
+  | jobLocation |       City        |                                       |
+  |   jobType   |    Custom List    | Full-Time,Part-Time,Remote,Internship |
+  |   status    |    Custom List    |      Interview,Declined,Pending       |
+  |  createdBy  |    Custom List    |       622887511db9d4ad52355cbc        |
+  |  createdAt  |     Datetime      |         format: ISO 8601(UTC)         |
+  | #Rows: 1000 |   Format: JSON    |    [x]array [] include null values    |
 
 &nbsp;
 
