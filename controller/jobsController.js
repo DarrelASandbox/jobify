@@ -1,8 +1,8 @@
 import { StatusCodes } from 'http-status-codes';
+import mongoose from 'mongoose';
 import { BadRequestError, NotFoundError } from '../errors/index.js';
 import Job from '../models/Job.js';
 import checkPermission from '../utils/checkPermission.js';
-import mongoose from 'mongoose';
 
 const createJob = async (req, res, next) => {
   const { position, company } = req.body;
