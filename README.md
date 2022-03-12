@@ -85,6 +85,8 @@ UserSchema.pre('save', async function () {
   |  createdAt  |     Datetime      |         format: ISO 8601(UTC)         |
   | #Rows: 1000 |   Format: JSON    |    [x]array [] include null values    |
 
+- SearchQuery: https://docs.mongodb.com/manual/reference/operator/query/regex/
+
 &nbsp;
 
 ### Notes taken from Persist User In Local Storage comment section:
@@ -129,6 +131,15 @@ serInfo: user ? JSON.parse("user") : null,
 > Now, why I think it's important to learn/teach MERN, because I honestly say that it made me a better front-end developer since now I have a better picture of entire process. Not just front-end part.
 
 > With that said, if it's a production ready app and I don't know whether it's going to be successful or not (essentially, how many users I will have). I seriously would consider Firebase.
+
+&nbsp;
+
+### Notes taken from Query Params - Sort comment section:
+
+> In your previous course "React Tutorial and Projects Course - Section 8: E-Commerce Project" we handled filter/sort with Context API (front-end). What is the difference handling filter/sort with back-end? Is it a personal preference?
+
+> Good Question. Well, that depends on the amount of data.
+> It was important for me to showcase, how we would do that with just front-end but in general any serious api (since it will have bunch of data) will provide all of the logic on the backend, since that way front-end is only responsible for fetching it. Otherwise, image if you have let's say 15 000 records, just pulling them in, will take ages.
 
 &nbsp;
 
