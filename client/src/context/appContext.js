@@ -6,7 +6,11 @@ import {
   CREATE_JOB_BEGIN,
   CREATE_JOB_ERROR,
   CREATE_JOB_SUCCESS,
+  DELETE_JOB_BEGIN,
   DISPLAY_ALERT,
+  EDIT_JOB_BEGIN,
+  EDIT_JOB_ERROR,
+  EDIT_JOB_SUCCESS,
   GET_JOBS_BEGIN,
   GET_JOBS_SUCCESS,
   HANDLE_CHANGE,
@@ -20,11 +24,11 @@ import {
   SETUP_USER_BEGIN,
   SETUP_USER_ERROR,
   SETUP_USER_SUCCESS,
+  SET_EDIT_JOB,
   TOGGLE_SIDEBAR,
   UPDATE_USER_BEGIN,
   UPDATE_USER_ERROR,
   UPDATE_USER_SUCCESS,
-  SET_EDIT_JOB,
 } from './actions';
 import reducer from './reducer';
 
@@ -250,11 +254,42 @@ const AppProvider = ({ children }) => {
   };
 
   const setEditJob = (id) => dispatch({ type: SET_EDIT_JOB, payload: { id } });
-  const editJob = () => console.log('edit job');
-  // Do not need to pass in anything into editJob() as info needed is already in the state.
 
-  const deleteJob = (id) => {
-    console.log(`delete job : ${id}`);
+  // Do not need to pass in anything into editJob() as info needed is already in the state.
+  const editJob = async () => {
+    dispatch({ type: EDIT_JOB_BEGIN });
+
+    try {
+      const { position, company, jobLocation, jobType, status } = state;
+      await authFetch.patch(`/jobs/${state.editJobId}`, {
+        company,
+        position,
+        jobLocation,
+        jobType,
+        status,
+      });
+
+      dispatch({ type: EDIT_JOB_SUCCESS });
+      dispatch({ type: CLEAR_VALUES });
+    } catch (error) {
+      if (error.response.status === 401) return;
+
+      dispatch({
+        type: EDIT_JOB_ERROR,
+        payload: { msg: error.response.data },
+      });
+    }
+  };
+
+  const deleteJob = async (jobId) => {
+    dispatch({ type: DELETE_JOB_BEGIN });
+    try {
+      await authFetch.delete(`jobs/${jobId}`);
+      getAllJobs();
+    } catch (error) {
+      console.log(error.response);
+      // logoutUser()
+    }
   };
 
   return (
