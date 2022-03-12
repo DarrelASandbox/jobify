@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useContext, useReducer } from 'react';
 import {
   CLEAR_ALERT,
+  CLEAR_FILTERS,
   CLEAR_VALUES,
   CREATE_JOB_BEGIN,
   CREATE_JOB_ERROR,
@@ -62,6 +63,11 @@ const initialState = {
   page: 1,
   stats: {},
   monthlyApplications: [],
+  search: '',
+  searchStatus: 'All',
+  searchType: 'All',
+  sort: 'Latest',
+  sortOptions: ['Latest', 'Oldest', 'a-z', 'z-a'],
 };
 
 const AppContext = React.createContext();
@@ -314,6 +320,8 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  const clearFilters = () => dispatch({ type: CLEAR_FILTERS });
+
   return (
     <AppContext.Provider
       value={{
@@ -333,6 +341,7 @@ const AppProvider = ({ children }) => {
         deleteJob,
         editJob,
         showStats,
+        clearFilters,
       }}
     >
       {children}

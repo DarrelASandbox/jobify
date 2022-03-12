@@ -1,5 +1,6 @@
 import {
   CLEAR_ALERT,
+  CLEAR_FILTERS,
   CLEAR_VALUES,
   CREATE_JOB_BEGIN,
   CREATE_JOB_ERROR,
@@ -308,6 +309,15 @@ const reducer = (state, action) => {
     };
   }
 
+  if (action.type === CLEAR_FILTERS) {
+    return {
+      ...state,
+      search: '',
+      searchStatus: 'All',
+      searchType: 'All',
+      sort: 'Latest',
+    };
+  }
   throw new Error(`no such action : $ {action.type}`);
 };
 

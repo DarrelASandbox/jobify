@@ -20,8 +20,8 @@ const getAllJobs = async (req, res) => {
   const { status, jobType, sort, search } = req.query;
   const queryObject = { createdBy: req.user.userId };
 
-  if (status !== 'All') queryObject.status = status;
-  if (jobType !== 'All') queryObject.jobType = jobType;
+  if (status && status !== 'All') queryObject.status = status;
+  if (jobType && jobType !== 'All') queryObject.jobType = jobType;
   // https://docs.mongodb.com/manual/reference/operator/query/regex/
   if (search) queryObject.position = { $regex: search, $options: 'i' };
 
