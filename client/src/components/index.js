@@ -1,4 +1,6 @@
 import Alert from './Alert';
+import AreaChartComponent from './AreaChartComponent';
+import BarChartComponent from './BarChartComponent';
 import BigSidebar from './BigSidebar';
 import ChartsContainer from './ChartsContainer';
 import FormRow from './FormRow';
@@ -11,8 +13,8 @@ import Logo from './Logo';
 import Navbar from './Navbar';
 import SearchContainer from './SearchContainer';
 import SmallSidebar from './SmallSidebar';
-import StatsItem from './StatsItem';
 import StatsContainer from './StatsContainer';
+import StatsItem from './StatsItem';
 
 export {
   Logo,
@@ -30,4 +32,6 @@ export {
   ChartsContainer,
   StatsItem,
   Loading,
+  AreaChartComponent,
+  BarChartComponent,
 };
