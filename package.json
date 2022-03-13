@@ -18,6 +18,7 @@
     "validator": "^13.7.0"
   },
   "scripts": {
+    "build-client": "cd client && npm run build",
     "server": "npx nodemon server.js --ignore client",
     "client": "npm start --prefix client",
     "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
