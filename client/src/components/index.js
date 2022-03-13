@@ -11,6 +11,7 @@ import JobInfo from './JobInfo';
 import Loading from './Loading';
 import Logo from './Logo';
 import Navbar from './Navbar';
+import PageButtonContainer from './PageButtonContainer';
 import SearchContainer from './SearchContainer';
 import SmallSidebar from './SmallSidebar';
 import StatsContainer from './StatsContainer';
@@ -34,4 +35,5 @@ export {
   Loading,
   AreaChartComponent,
   BarChartComponent,
+  PageButtonContainer,
 };

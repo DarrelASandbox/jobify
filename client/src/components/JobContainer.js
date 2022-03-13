@@ -3,6 +3,7 @@ import Wrapper from '../assets/wrappers/JobsContainer';
 import { useAppContext } from '../context/appContext';
 import Job from './Job';
 import Loading from './Loading';
+import PageButtonContainer from './PageButtonContainer';
 
 const JobContainer = () => {
   const {
@@ -15,11 +16,12 @@ const JobContainer = () => {
     searchStatus,
     searchType,
     sort,
+    numOfPages,
   } = useAppContext();
 
   useEffect(() => {
     getAllJobs();
-  }, [search, searchStatus, searchType, sort]);
+  }, [page, search, searchStatus, searchType, sort]);
 
   if (isLoading) return <Loading center />;
   if (jobs.length === 0)
@@ -32,14 +34,14 @@ const JobContainer = () => {
   return (
     <Wrapper>
       <h5>
-        {totalJobs} job {jobs.length > 1 && 's'} found.
+        {totalJobs} job{jobs.length > 1 && 's'} found.
       </h5>
       <div className='jobs'>
         {jobs.map((job) => (
           <Job key={job._id} {...job} />
         ))}
       </div>
-      {/* TODO: pagination buttons */}
+      {numOfPages > 1 && <PageButtonContainer />}
     </Wrapper>
   );
 };

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useReducer } from 'react';
 import {
+  CHANGE_PAGE,
   CLEAR_ALERT,
   CLEAR_FILTERS,
   CLEAR_VALUES,
@@ -245,8 +246,8 @@ const AppProvider = ({ children }) => {
   };
 
   const getAllJobs = async () => {
-    const { search, searchStatus, searchType, sort } = state;
-    let url = `/jobs?status=${searchStatus}&jobType=${searchType}&sort=${sort}`;
+    const { page, search, searchStatus, searchType, sort } = state;
+    let url = `/jobs?page=${page}&status=${searchStatus}&jobType=${searchType}&sort=${sort}`;
     if (search) url = url + `&search=${search}`;
 
     dispatch({ type: GET_JOBS_BEGIN });
@@ -325,6 +326,9 @@ const AppProvider = ({ children }) => {
 
   const clearFilters = () => dispatch({ type: CLEAR_FILTERS });
 
+  const changePage = (page) =>
+    dispatch({ type: CHANGE_PAGE, payload: { page } });
+
   return (
     <AppContext.Provider
       value={{
@@ -345,6 +349,7 @@ const AppProvider = ({ children }) => {
         editJob,
         showStats,
         clearFilters,
+        changePage,
       }}
     >
       {children}
