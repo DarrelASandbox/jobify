@@ -261,8 +261,8 @@ const AppProvider = ({ children }) => {
         payload: { jobs, totalJobs, numOfPages },
       });
     } catch (error) {
-      console.log(error.response);
-      // logoutUser() // Turn off during development.
+      // console.log(error.response);
+      logoutUser(); // Turn off during development.
     }
     clearAlert();
   };
@@ -301,8 +301,8 @@ const AppProvider = ({ children }) => {
       await authFetch.delete(`jobs/${jobId}`);
       getAllJobs();
     } catch (error) {
-      console.log(error.response);
-      // logoutUser()
+      // console.log(error.response);
+      logoutUser();
     }
   };
 
@@ -319,8 +319,8 @@ const AppProvider = ({ children }) => {
         },
       });
     } catch (error) {
-      console.log(error);
-      // logoutUser()
+      // console.log(error);
+      logoutUser();
     }
   };
 
