@@ -1,7 +1,7 @@
 ## About The Project
 
 - Build Full Stack Application from Scratch with MongoDB, Express, React and NodeJS on Udemy
-- Tutorial for Jobify
+- Tutorial for Jobify ([Heroku Demo](https://jobify-13-mar-2022.herokuapp.com/))
 - https://www.johnsmilga.com/
 - https://github.com/john-smilga/mern-course-jobify
 - https://course-api.com/ (John Smilga)
